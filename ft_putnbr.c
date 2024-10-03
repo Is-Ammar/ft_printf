@@ -6,30 +6,35 @@
 /*   By: iammar <iammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:45:50 by iammar            #+#    #+#             */
-/*   Updated: 2024/09/28 18:56:39 by iammar           ###   ########.fr       */
+/*   Updated: 2024/10/03 15:31:21 by iammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr(int nb)
+int	ft_putnbr(unsigned int nb)
 {
+	int count;
+	count = 0;
 	if (nb == -2147483648)
 	{
 		ft_putchar('-');
 		write(1, "2147483648", 10);
-		return ;
+		count+=11;
+		return count;
 	}
 	if (nb < 0)
 	{
 		ft_putchar('-');
 		nb = -nb;
+		count+=1;
 	}
 	if (nb >= 10)
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		count+=ft_putnbr(nb / 10);
+		count+=ft_putnbr(nb % 10);
 	}
 	else
-		ft_putchar(nb + '0');
+		count+=ft_putchar(nb + '0');
+		return (count);
 }

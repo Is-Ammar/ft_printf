@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putXnbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iammar <iammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/28 18:20:34 by iammar            #+#    #+#             */
-/*   Updated: 2024/10/03 14:34:47 by iammar           ###   ########.fr       */
+/*   Created: 2024/10/02 22:35:07 by iammar            #+#    #+#             */
+/*   Updated: 2024/10/03 14:31:09 by iammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char const *s)
+int	ft_put_xxnbr(unsigned int n)
 {
-	int i =0;
-	while (s[i])
+	int		count;
+	char	*hex;
+
+	count = 0;
+	hex = "0123456789ABCDEF";
+	if (n < 16)
 	{
-		write(1, &s[i], 1);
-		i++;
+		count += ft_putchar(hex[n]);
 	}
-	return (i);
+	else
+	{
+		count += ft_put_xxnbr(n / 16);
+		count += ft_put_xxnbr(n % 16);
+	}
+	return (count);
 }

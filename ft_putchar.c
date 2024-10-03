@@ -6,13 +6,13 @@
 /*   By: iammar <iammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:16:53 by iammar            #+#    #+#             */
-/*   Updated: 2024/09/28 18:35:14 by iammar           ###   ########.fr       */
+/*   Updated: 2024/10/03 14:30:15 by iammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putchar(char c)
+int 	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	return(write(1, &c, 1));
 }
