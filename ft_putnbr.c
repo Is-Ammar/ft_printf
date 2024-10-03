@@ -6,13 +6,13 @@
 /*   By: iammar <iammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:45:50 by iammar            #+#    #+#             */
-/*   Updated: 2024/10/03 15:31:21 by iammar           ###   ########.fr       */
+/*   Updated: 2024/10/04 00:06:29 by iammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(unsigned int nb)
+int	ft_putnbr( int nb)
 {
 	int	count;
 

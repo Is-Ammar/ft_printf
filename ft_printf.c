@@ -6,7 +6,7 @@
 /*   By: iammar <iammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:52:48 by iammar            #+#    #+#             */
-/*   Updated: 2024/10/03 21:19:36 by iammar           ###   ########.fr       */
+/*   Updated: 2024/10/04 00:08:05 by iammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_cases(const char **form, va_list args)
 		return (len + ft_putptr((unsigned long)va_arg(args, void *)));
 	}
 	if (**form == 'u')
-		return (ft_putnbr(va_arg(args, unsigned int)));
+		return (ft_putnbr(va_arg(args,  unsigned int)));
 	if (**form == 'x')
 		return (ft_putxnbr(va_arg(args, unsigned int)));
 	if (**form == 'X')
@@ -70,13 +70,13 @@ int	ft_printf(const char *form, ...)
 	return (len);
 }
 
-// int	main(void)
-// {
-// 	int a = 25;
-// 	int b = 9;
-// 	char c = 'a';
-// 	char *d = "abcdef";
-// 	printf("original:\n%c\n%s\n %p\n %d\n %i\n %u\n %X\n", c, d, d, a, b, a, a);
-// 	ft_printf("mine:\n%c\n%s\n %p\n %d\n %i\n %u\n %X\n", c, d, d, a, b, a, a);
-// 	return (0);
-// }
+int	main(void)
+{
+	int a = -2147483648;
+	int b = 9;
+	char c = 'a';
+	char *d = "abcdef";
+	printf("original:\n%c\n%s\n %p\n %d\n %i\n %u\n %X\n", c, d, d, a, b, a, a);
+	ft_printf("mine:\n%c\n%s\n %p\n %d\n %i\n %u\n %X\n", c, d, d, a, b, a, a);
+	return (0);
+}
