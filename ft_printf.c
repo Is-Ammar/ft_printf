@@ -6,82 +6,77 @@
 /*   By: iammar <iammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:52:48 by iammar            #+#    #+#             */
-/*   Updated: 2024/10/03 15:42:07 by iammar           ###   ########.fr       */
+/*   Updated: 2024/10/03 21:19:36 by iammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *form, ...)
+int	ft_cases(const char **form, va_list args)
 {
-    va_list args;
-    int len = 0;
+	int	len;
 
-    va_start(args, form);
-    
-    while (*form)
-    {
-        if (*form == '%')
-        {
-            form++;
-            if (*form == 'd' || *form == 'i')
-            {
-                int num = va_arg(args, int);
-                len += ft_putnbr(num);
-            }
-            else if (*form == 's')
-            {
-                 char *str = va_arg(args, char *);
-                len += ft_putstr(str);
-            }
-            else if (*form == 'p')
-            {
-                len += ft_putstr("0x");
-                len += ft_putptr((unsigned long)va_arg(args, void *));;
-            }
-            else if (*form == 'u')
-            {
-                unsigned int num = va_arg(args, unsigned int);
-                len += ft_putnbr(num);
-            }
-            else if (*form == 'x')
-            {
-                unsigned int num = va_arg(args, unsigned int);
-                len += ft_putxnbr(num);
-            }
-            else if (*form == 'X')
-            {
-                unsigned int num = va_arg(args, unsigned int);
-                len += ft_put_xxnbr(num);
-            }
-            else if (*form == 'c')
-            {
-                char ch = (char)va_arg(args, int);
-                len += ft_putchar(ch);
-            }
-            else if (*form == '%')
-            {
-                len += ft_putchar('%');
-            }
-            
-        }
-        else
-        {
-            len += ft_putchar(*form);
-        }
-        form++;
-    }
-    
-    va_end(args);
-    return len;
+	if (**form == 'd' || **form == 'i')
+		return (ft_putnbr(va_arg(args, int)));
+	if (**form == 's')
+		return (ft_putstr(va_arg(args, char *)));
+	if (**form == 'p')
+	{
+		len = ft_putstr("0x");
+		return (len + ft_putptr((unsigned long)va_arg(args, void *)));
+	}
+	if (**form == 'u')
+		return (ft_putnbr(va_arg(args, unsigned int)));
+	if (**form == 'x')
+		return (ft_putxnbr(va_arg(args, unsigned int)));
+	if (**form == 'X')
+		return (ft_put_xxnbr(va_arg(args, unsigned int)));
+	if (**form == 'c')
+		return (ft_putchar((char)va_arg(args, int)));
+	if (**form == '%')
+		return (ft_putchar('%'));
+	return (0);
 }
-// int main()
+
+int	ft_process(const char *form, va_list args)
+{
+	int	len;
+
+	len = 0;
+	while (*form)
+	{
+		if (*form == '%')
+		{
+			form++;
+			len += ft_cases(&form, args);
+		}
+		else
+		{
+			len += ft_putchar(*form);
+		}
+		form++;
+	}
+	return (len);
+}
+
+int	ft_printf(const char *form, ...)
+{
+	va_list	args;
+	int		len;
+
+	va_start(args, form);
+	len = ft_process(form, args);
+	va_end(args);
+	return (len);
+}
+
+// int	main(void)
 // {
-//     int a = 25;
-//     int b = 9;
-//     char c = 'a';
-//     char *d = "abcdef";
-//     printf("original:\n%c\n%s\n %p\n %d\n %i\n %u\n %X\n", c,d,d,a,b,a,a);
-//     ft_printf("mine:\n%c\n%s\n %p\n %d\n %i\n %u\n %X\n", c,d,d,a,b,a,a);
-//     return 0;
+// 	int a = 25;
+// 	int b = 9;
+// 	char c = 'a';
+// 	char *d = "abcdef";
+// 	printf("original:\n%c\n%s\n %p\n %d\n %i\n %u\n %X\n", c, d, d, a, b, a, a);
+// 	ft_printf("mine:\n%c\n%s\n %p\n %d\n %i\n %u\n %X\n", c, d, d, a, b, a, a);
+// 	return (0);
 // }

@@ -13,9 +13,9 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
+# include <unistd.h>
 
 int	ft_put_xxnbr(unsigned int n);
 int	ft_putchar(char c);
