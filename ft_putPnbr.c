@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr copy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iammar <iammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 17:39:26 by iammar            #+#    #+#             */
-/*   Updated: 2024/10/07 22:43:36 by iammar           ###   ########.fr       */
+/*   Created: 2024/09/28 18:45:50 by iammar            #+#    #+#             */
+/*   Updated: 2024/10/07 22:42:50 by iammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <unistd.h>
+int	ft_putPnbr( long nb)
+{
+	int	count;
 
-int	ft_put_xxnbr(unsigned int n);
-int	ft_putchar(char c);
-int	ft_putnbr( int n);
-int	ft_putstr(const char *s);
-int	ft_putPnbr( long nb);
-int	ft_putxnbr(unsigned int n);
-int	ft_printf(const char *f, ...);
-int	ft_putptr(unsigned long n);
-
-#endif
+	count = 0;
+	if (nb == -2147483648)
+	{
+		write(1, "2147483648", 10);
+		count += 10;
+		return (count);
+	}
+	if (nb < 0)
+	{
+		nb = -nb;
+		count += 1;
+	}
+	if (nb >= 10)
+	{
+		count += ft_putnbr(nb / 10);
+		count += ft_putnbr(nb % 10);
+	}
+	else
+		count += ft_putchar(nb + '0');
+	return (count);
+}

@@ -6,7 +6,7 @@
 /*   By: iammar <iammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 17:52:48 by iammar            #+#    #+#             */
-/*   Updated: 2024/10/04 18:01:15 by iammar           ###   ########.fr       */
+/*   Updated: 2024/10/07 22:45:29 by iammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_cases(const char **form, va_list args)
 		return (len + ft_putptr((unsigned long)va_arg(args, void *)));
 	}
 	if (**form == 'u')
-		return (ft_putnbr(va_arg(args,  unsigned int)));
+		return (ft_putPnbr((long)va_arg(args,  long)));
 	if (**form == 'x')
 		return (ft_putxnbr(va_arg(args, unsigned int)));
 	if (**form == 'X')

@@ -6,7 +6,8 @@ SRCS =	ft_printf.c\
 			ft_putnbr.c\
 			ft_putstr.c\
 			ft_putxnbr.c\
-			ft_putptr.c
+			ft_putptr.c\
+			ft_putPnbr.c
 
 OBJECT = $(SRCS:.c=.o)
 
