@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iammar <iammar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iammar <iammar@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/28 18:20:34 by iammar            #+#    #+#             */
-/*   Updated: 2024/10/03 14:34:47 by iammar           ###   ########.fr       */
+/*   Created: 2024/11/04 09:50:56 by iammar            #+#    #+#             */
+/*   Updated: 2024/11/06 17:12:07 by iammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 int	ft_putstr(char const *s)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	while (s[i])
+	count = 0;
+	if (s == NULL)
+		return (count + ft_putstr("(null)"));
+	while (*s)
 	{
-		write(1, &s[i], 1);
-		i++;
+		count += ft_putchar(*s);
+		s++;
 	}
-	return (i);
+	return (count);
 }

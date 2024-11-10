@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putPnbr.c                                       :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iammar <iammar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iammar <iammar@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/28 18:45:50 by iammar            #+#    #+#             */
-/*   Updated: 2024/10/07 23:01:25 by iammar           ###   ########.fr       */
+/*   Created: 2024/11/04 09:50:40 by iammar            #+#    #+#             */
+/*   Updated: 2024/11/06 17:12:10 by iammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putPnbr( long nb)
+int	ft_putunbr(unsigned int nb)
 {
 	int	count;
 
 	count = 0;
-	if (nb < 0)
+	if (nb == 0)
 	{
-		nb = -nb;
-		count += 1;
+		return (ft_putchar('0'));
 	}
 	if (nb >= 10)
 	{
-		count += ft_putnbr(nb / 10);
-		count += ft_putnbr(nb % 10);
+		count += ft_putunbr(nb / 10);
 	}
-	else
-		count += ft_putchar(nb + '0');
+	count += ft_putchar((nb % 10) + '0');
 	return (count);
 }

@@ -1,3 +1,5 @@
+CC = cc
+
 NAME =	libftprintf.a
 
 SRCS =	ft_printf.c\
@@ -7,30 +9,21 @@ SRCS =	ft_printf.c\
 			ft_putstr.c\
 			ft_putxnbr.c\
 			ft_putptr.c\
-			ft_putPnbr.c
+			ft_putunbr.c
 
 OBJECT = $(SRCS:.c=.o)
 
-
 CFLAGS = -Wall -Wextra -Werror
-
 
 all: $(NAME)
 
 $(NAME): $(OBJECT)
 	@ar rcs $(NAME) $(OBJECT)
 
-
-bonus: $(OBJECTB)
-	@ar rcs $(NAME) $(OBJECTB)
-
-
 clean:
-	@rm -f $(OBJECT) $(OBJECTB)
-
+	@rm -f $(OBJECT)
 
 fclean: clean
 	@rm -f $(NAME)
-
 
 re: fclean all

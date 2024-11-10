@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iammar <iammar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iammar <iammar@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/28 18:45:50 by iammar            #+#    #+#             */
-/*   Updated: 2024/10/04 00:06:29 by iammar           ###   ########.fr       */
+/*   Created: 2024/11/04 09:50:33 by iammar            #+#    #+#             */
+/*   Updated: 2024/11/06 17:12:00 by iammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr( int nb)
+int	ft_putnbr(int nb)
 {
 	int	count;
 
 	count = 0;
 	if (nb == -2147483648)
 	{
-		ft_putchar('-');
-		write(1, "2147483648", 10);
-		count += 11;
+		count += write(1, "-2147483648", 11);
 		return (count);
 	}
 	if (nb < 0)
